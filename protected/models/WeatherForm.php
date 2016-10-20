@@ -8,7 +8,7 @@ class WeatherForm extends CFormModel
     public function rules()
     {
         return array(
-            array('from', 'required'),
+            array('from', 'required', 'message'=>'Поле "откуда" обязательно для заполнения'),
             array('where', 'safe')
         );
     }

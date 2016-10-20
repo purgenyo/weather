@@ -1,34 +1,33 @@
 <?php
 /**
- * @var WeatherController $weather
+ * @var WeatherController $weatherData
+ * @var WeatherController $this
  * @var WeatherForm $model
+ * @var CActiveForm $form
  */
 ?>
+<h1 class="text-center">Узнайте погоду на вашем маршруте</h1>
 
-<div class="form">
-<?php echo CHtml::beginForm(); ?>
+<div class="row text-center">
+    <?php $form=$this->beginWidget('CActiveForm', array(
+        'htmlOptions'=>array('class'=>'form-inline')
+    )); ?>
 
-<?php echo CHtml::errorSummary($model); ?>
+    <?php echo $form->errorSummary($model, false); ?>
 
-    <div class="row">
-        <?php echo CHtml::activeLabel($model,'where'); ?>
-        <?php echo CHtml::activeTextField($model,'where'); ?>
+    <div class="form-group">
+        <?php echo $form->textField($model, 'from', array('placeholder'=>'Откуда', 'class'=>'form-control')) ?>
     </div>
 
-
-    <div class="row">
-        <?php echo CHtml::activeLabel($model,'from'); ?>
-        <?php echo CHtml::activeTextField($model,'from'); ?>
+    <div class="form-group">
+        <?php echo $form->textField($model,'where', array('placeholder'=>'Куда', 'class'=>'form-control')) ?>
     </div>
 
+    <button type="submit" class="btn btn-default">Узнать погоду</button>
+    <?php $this->endWidget(); ?>
+</div>
 
-    <div class="row submit">
-        <?php echo CHtml::submitButton('Узнать погоду'); ?>
-    </div>
-
-    <?php
-
-
-    ?>
-
-<?php echo CHtml::endForm(); ?>
+<?php
+if($weatherData)
+    $this->renderPartial('_weather_information', compact('weatherData'));
+?>

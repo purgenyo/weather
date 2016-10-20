@@ -1,0 +1,12 @@
+.weather-block {
+    border: 1px solid #E6F2FF;
+    margin-top: 10px;
+    text-align: center;
+    width: 45%;
+    border: 1px solid #cccccc;
+    border-radius: 5px;
+}
+
+.errorSummary ul {
+    list-style: none;
+}
